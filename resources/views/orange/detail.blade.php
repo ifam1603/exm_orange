@@ -37,6 +37,21 @@
                 
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Comentarios</h2>
+                <ul class="list-unstyled">
+                    @foreach($comments as $comment)
+                        <li>
+                            <strong>{{ $comment['commenter'] }}</strong> dijo: {{ $comment['comment'] }} ({{ $comment['created_at'] }})
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
     </div>
+
+
 </body>
 @endsection

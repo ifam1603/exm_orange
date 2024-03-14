@@ -20,9 +20,19 @@ class orangeController extends Controller
 
     public function detail($id) {
         $response = Http::get('http://localhost:3000/posts/'.$id);
-            if ($response->successful()) {
+        
+        if ($response->successful()) {
             $post = $response->json()[0]; // Access the first element of the array
-                        return view('orange.detail', ['post' => $post]);
+    
+            $commentsResponse = Http::get("http://localhost:3000/comments/post_id/{$id}");
+            
+            if ($commentsResponse->successful()) {
+                $comments = $commentsResponse->json();
+            } else {
+                $comments = [];
+            }
+    
+            return view('orange.detail', compact('post', 'comments'));
         } else {
             abort(404); 
         }
