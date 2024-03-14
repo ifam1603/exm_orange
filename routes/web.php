@@ -20,3 +20,4 @@ Route::get('/blog', [orangeController::class, 'blog'])->name('blog');
 
 Route::get('/posts/{id}', [orangeController::class, 'detail'])->name('post.detail');
 
+

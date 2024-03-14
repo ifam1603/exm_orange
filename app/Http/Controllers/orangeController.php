@@ -19,20 +19,13 @@ class orangeController extends Controller
     }
 
     public function detail($id) {
-         // Make an HTTP request to the API endpoint to fetch the post details
-    $response = Http::get('http://localhost:3000/posts/'.$id);
-
-    // Check if the request was successful
-    if ($response->successful()) {
-        // Retrieve the post details from the API response
-        $post = $response->json();
-        // Pass the $post to the detail view
-        return view('post.detail', ['post' => $post]);
-    } else {
-        // Handle the case where the request was not successful, for example:
-        abort(404); // You can customize the error handling based on your requirements
+        $response = Http::get('http://localhost:3000/posts/'.$id);
+            if ($response->successful()) {
+            $post = $response->json()[0]; // Access the first element of the array
+                        return view('orange.detail', ['post' => $post]);
+        } else {
+            abort(404); 
+        }
     }
-    }
-    
     
 }

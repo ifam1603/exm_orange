@@ -31,7 +31,7 @@
                                     <span class="posted_on">{{$pos->created_at}}</span>
                                     <span class="comment"><a href="">21<i class="icon-speech-bubble"></i></a></span>
                                     <p>{{$pos->content}}</p>
-                                    <a href="#" class="btn btn-primary">Read More</a>
+                                    <a href="{{ route('post.detail', ['id' => $pos->id]) }}" class="btn btn-primary">Read More</a>
                                 </div> 
                             
                         </div>
