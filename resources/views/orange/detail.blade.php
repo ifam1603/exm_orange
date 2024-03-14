@@ -50,6 +50,24 @@
                 </ul>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Agregar Comentario</h3>
+                <form action="{{ route('addComment', ['post_id' => $post['id']]) }}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="commenter">Nombre:</label>
+                        <input type="text" class="form-control" id="commenter" name="commenter" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Comentario:</label>
+                        <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar Comentario</button>
+                </form>
+            </div>
+        </div>
     </div>
 
 

@@ -20,4 +20,5 @@ Route::get('/blog', [orangeController::class, 'blog'])->name('blog');
 
 Route::get('/posts/{id}', [orangeController::class, 'detail'])->name('post.detail');
 
+Route::post('/posts/{post_id}/comment', [orangeController::class, 'addComment'])->name('addComment');
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 
 class orangeController extends Controller
@@ -37,5 +38,22 @@ class orangeController extends Controller
             abort(404); 
         }
     }
+
+    public function addComment(Request $request, $post_id) {
+        $response = Http::post("http://localhost:3000/posts/{$post_id}/comment", [
+            'commenter' => $request->input('commenter'),
+            'comment' => $request->input('comment'),
+            'created_at' => Carbon::now()->toDateString() // Obtiene la fecha actual en formato yyyy-mm-dd
+
+        ]);
+        
+        if ($response->successful()) {
+            return redirect()->back()->with('success', 'Comment added successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Failed to add comment.');
+        }
+    }
+    
+    
     
 }
